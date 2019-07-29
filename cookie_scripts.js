@@ -39,20 +39,20 @@ function cookieTheUser(cname1, cname2) {
 }
 
 //insert names of variants for cookies here
-cookieTheUser("Variant1","Variant2");
+cookieTheUser("Control","Variant");
 
 //if the cookie for the corresponding variant exists, display the variant. Otherwise hide the other variants display
-if (findCookie('Variant1') == true) {
-  document.getElementById("variant2-div").innerHTML = "";
+if (findCookie('Control') == true) {
+  document.getElementById("variant-div").innerHTML = "";
 
   dataLayer.push({'CRO-Test-Variable': 'True',
-  'VariantVersion': 'variant1'});
+  'VariantVersion': 'control'});
 }
 
-if (findCookie('Variant2') == true) {
-  document.getElementById("variant1-div").innerHTML = "";
+if (findCookie('Variant') == true) {
+  document.getElementById("control-div").innerHTML = "";
 
   dataLayer.push({'CRO-Test-Variable': 'True',
-  'VariantVersion': 'variant2'});
+  'VariantVersion': 'variant'});
 }
 
