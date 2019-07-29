@@ -7,7 +7,7 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; // creates cookie
 }
 
-//checks to see whether cookie with certain name exists.
+//Checks to see whether cookie with certain name exists.
 //Returns true if it finds the cookie
 //Returns false if cookie doesnt exist in user's browser storage.
 function findCookie(cname) {
@@ -39,20 +39,20 @@ function cookieTheUser(cname1, cname2) {
 }
 
 //insert names of variants for cookies here
-cookieTheUser("Variant1-Manual-AB","Variant2-Manual-AB");
+cookieTheUser("Variant1","Variant2");
 
-//if the cookie for the corresponding variant exists, display the variant. Otherwise display is hidden
-if (findCookie("Variant1-Manual-AB")==false) {
-  document.getElementById("variant1-test").style.display = "none";
-} else {
-  document.getElementById("variant1-test").id = "Variant1-TRIGGER";
+//if the cookie for the corresponding variant exists, display the variant. Otherwise hide the other variants display
+if (findCookie('Variant1') == true) {
+  document.getElementById("variant2-div").innerHTML = "";
+
+  dataLayer.push({'CRO-Test-Variable': 'True',
+  'VariantVersion': 'variant1'});
 }
 
-//if the cookie for the corresponding variant exists, display the variant. Otherwise display is hidden
-//repeated for other variant.
-if (findCookie("Variant2-Manual-AB")==false) {
-  document.getElementById("variant2-test").style.display = "none";
-} else {
-  document.getElementById("variant2-test").id = "Variant2-TRIGGER";
+if (findCookie('Variant2') == true) {
+  document.getElementById("variant1-div").innerHTML = "";
+
+  dataLayer.push({'CRO-Test-Variable': 'True',
+  'VariantVersion': 'variant2'});
 }
 
